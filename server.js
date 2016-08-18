@@ -1,17 +1,10 @@
-//  OpenShift sample Node application
-var express = require('express'),
-    fs      = require('fs'),
-    app     = express(),
-    eps     = require('ejs'),
-    morgan  = require('morgan');
+"use strict"
+
+var fs = require('fs');
+var http = require('http');
     
-Object.assign=require('object-assign')
-
-app.engine('html', require('ejs').renderFile);
-app.use(morgan('combined'))
-
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
-    ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
+    ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1',
     mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
     mongoURLLabel = "";
 
@@ -57,6 +50,22 @@ var initDb = function(callback) {
     console.log('Connected to MongoDB at: %s', mongoURL);
   });
 };
+
+
+// index page
+var html = fs.readFileSync('views/index.html');
+
+var server = http.createServer(function (req, res) {
+		
+	res.writeHead(200, { 'Content-Type': 'text/html' });
+	res.end(html);
+	
+}).listen(port, ip);
+console.log('%s: Node server started on %s:%d',
+	Date(Date.now()), ip, port);
+
+
+/*
 
 app.get('/', function (req, res) {
   // try to initialize the db on every request if it's not already
@@ -105,3 +114,4 @@ app.listen(port, ip);
 console.log('Server running on http://%s:%s', ip, port);
 
 module.exports = app ;
+*/
