@@ -2,22 +2,23 @@
 
 var fs = require('fs');
 var http = require('http');
-    
-var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
-    ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
-    mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
-    mongoURLLabel = "";
 
-console.log('mongoURL :' + mongoURL);
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
+  ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
+  mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
+  mongoURLLabel = "";
+
+console.log('mongoURL :' + mongoURL + ' ' + process.env.DATABASE_SERVICE_NAME);
 console.log('server :' + ip + ' ' + port);
 
-/* if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
+if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
+
   var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
-      mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],
-      mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'],
-      mongoDatabase = process.env[mongoServiceName + '_DATABASE'],
-      mongoPassword = process.env[mongoServiceName + '_PASSWORD']
-      mongoUser = process.env[mongoServiceName + '_USER'];
+    mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],
+    mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'],
+    mongoDatabase = process.env[mongoServiceName + '_DATABASE'],
+    mongoPassword = process.env[mongoServiceName + '_PASSWORD'],
+    mongoUser = process.env[mongoServiceName + '_USER'];
 
   if (mongoHost && mongoPort && mongoDatabase) {
     mongoURLLabel = mongoURL = 'mongodb://';
@@ -26,20 +27,22 @@ console.log('server :' + ip + ' ' + port);
     }
     // Provide UI label that excludes user id and pw
     mongoURLLabel += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
-    mongoURL += mongoHost + ':' +  mongoPort + '/' + mongoDatabase;
-
+    mongoURL += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
+  }
+  else {
+    console.warn('MongoDB configuration error ' + mongoHost + ' ' + mongoPort + ' ' + mongoDatabase);
   }
 }
 var db = null,
-    dbDetails = new Object();
+  dbDetails = new Object();
 
-var initDb = function(callback) {
+var initDb = function (callback) {
   if (mongoURL == null) return;
 
   var mongodb = require('mongodb');
   if (mongodb == null) return;
 
-  mongodb.connect(mongoURL, function(err, conn) {
+  mongodb.connect(mongoURL, function (err, conn) {
     if (err) {
       callback(err);
       return;
@@ -52,20 +55,24 @@ var initDb = function(callback) {
 
     console.log('Connected to MongoDB at: %s', mongoURL);
   });
-}; */
+};
 
+
+initDb(function (err) {
+  console.log('Error connecting to Mongo. Message:\n' + err);
+});
 
 // index page
 var html = fs.readFileSync('views/index.html');
 
 var server = http.createServer(function (req, res) {
-		
-	res.writeHead(200, { 'Content-Type': 'text/html' });
-	res.end(html);
-	
+
+  res.writeHead(200, { 'Content-Type': 'text/html' });
+  res.end(html);
+
 }).listen(port, ip);
 console.log('%s: Node server started on %s:%d',
-	Date(Date.now()), ip, port);
+  Date(Date.now()), ip, port);
 
 
 /*

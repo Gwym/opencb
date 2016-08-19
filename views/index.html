@@ -12,7 +12,31 @@
       margin: 0;
     }
   </style>
+  <script language="javascript" type="text/javascript" defer>
+      
+      	var websocket = new WebSocket("ws://http://nodejs-mongodb-example-opencb.0ec9.hackathon.openshiftapps.com:8000/", "yh001");
+      	
+      	websocket.onopen = function(e) { 
+      		console.log("ws open");
+      		console.log(e);
+      		websocket.send("ws hello");
+      	};
 
+      	websocket.onclose = function(e) {
+      		console.log("ws close");
+      		console.log(e); 
+      	};
+      	
+      	websocket.onmessage = function(e) {  
+      		console.log("ws msg");
+      		console.log(e.data);
+      	};
+      	
+      	websocket.onerror = function(e) {
+      		console.log("ws error ");
+      		console.log(e);
+      	};
+  </script>
 </head>
 
 <body>
