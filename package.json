@@ -4,6 +4,7 @@
   "description": "OpenCB for OpenShift 3",
   "main": "server.js",
   "dependencies": {
+    "ws": "~0",
     "mongodb": "^2.1.16"
   },
   "engine": {
