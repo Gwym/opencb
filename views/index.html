@@ -14,12 +14,13 @@
   </style>
   <script language="javascript" type="text/javascript" defer>
       
-      	var websocket = new WebSocket("ws://nodejs-mongodb-example-opencb.0ec9.hackathon.openshiftapps.com:8000/", "yh001");
+      //	var websocket = new WebSocket("ws://nodejs-mongodb-example-opencb.0ec9.hackathon.openshiftapps.com:8000/", "yh001");
+				var websocket = new WebSocket("ws://0.0.0.0:8080/", "yh001");
       	
       	websocket.onopen = function(e) { 
       		console.log("ws open");
       		console.log(e);
-      		websocket.send("ws hello");
+      		websocket.send(JSON.stringify({seq:0, id: "test1", pwd: "test1" }));
       	};
 
       	websocket.onclose = function(e) {
