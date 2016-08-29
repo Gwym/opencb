@@ -2,15 +2,15 @@
   "kind": "Template",
   "apiVersion": "v1",
   "metadata": {
-    "name": "nodejs-example",
+    "name": "opencb-node",
     "annotations": {
       "description": "An example Node.js application with no database",
-      "tags": "quickstart,nodejs",
+      "tags": "opencb",
       "iconClass": "icon-nodejs"
     }
   },
   "labels": {
-    "template": "nodejs-example"
+    "template": "opencb-node"
   },
   "objects": [
     {
@@ -143,7 +143,7 @@
             "imageChangeParams": {
               "automatic": true,
               "containerNames": [
-                "nodejs-example"
+                "opencb-node"
               ],
               "from": {
                 "kind": "ImageStreamTag",
@@ -169,7 +169,7 @@
           "spec": {
             "containers": [
               {
-                "name": "nodejs-example",
+                "name": "opencb-node",
                 "image": " ",
                 "ports": [
                   {
@@ -232,7 +232,7 @@
       "displayName": "Name",
       "description": "The name assigned to all of the frontend objects defined in this template.",
       "required": true,
-      "value": "nodejs-example"
+      "value": "opencb-node"
     },
     {
       "name": "NAMESPACE",
@@ -253,7 +253,7 @@
       "displayName": "Git Repository URL",
       "description": "The URL of the repository with your application source code.",
       "required": true,
-      "value": "https://github.com/openshift/nodejs-ex.git"
+      "value": "https://github.com/Gwym/opencb"
     },
     {
       "name": "SOURCE_REPOSITORY_REF",
