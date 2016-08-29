@@ -2,5 +2,11 @@
 logs
 *.log
 
+#sourcemap
+*.map
+
 # Dependency directories
 node_modules
+
+# Typescript typings
+server/typings
