@@ -59,8 +59,10 @@ var logger = {
    login: string;
    password_hash: string;
 
-   constructor(name: string) {
+   constructor(name: string, login: string, password: string) {
      this.name = name;
+     this.login = login;
+     this.password_hash = password;     // TODO (0) : hash passwords, rolling id, mongo datastore
    }
 }
 
@@ -72,8 +74,7 @@ interface IUserMessage {
 
 var users = {
   find: function(login: string): User {
-    // TODO (0) : hash passwords, rolling id, mongo datastore
-    return new User('Test');
+    return new User('Test', 'test', 'test');
   }
 } 
 

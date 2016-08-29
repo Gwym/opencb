@@ -33,13 +33,15 @@ var logger = {
     }
 };
 class User {
-    constructor(name) {
+    constructor(name, login, password) {
         this.name = name;
+        this.login = login;
+        this.password_hash = password;
     }
 }
 var users = {
     find: function (login) {
-        return new User('Test');
+        return new User('Test', 'test', 'test');
     }
 };
 console.log('mongoURL :' + env.mongoURL + ' ' + process.env.DATABASE_SERVICE_NAME);

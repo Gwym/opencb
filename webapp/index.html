@@ -113,9 +113,9 @@
 					pwd: document.getElementById('password-input').value
 				}
 
-				console.log('doLogin > ws://' + window.location.hostname + '@' + message.id);
+				console.log('doLogin > ws://' + window.location.hostname + ':' + window.location.port + ' @ ' + message.login);
 
-				var websocket = new WebSocket('ws://' + window.location.hostname, 'ocb1');
+				var websocket = new WebSocket('ws://' + window.location.hostname + ':' + window.location.port, 'ocb1');
 				
 				websocket.onopen = function(e) { 
 					console.log('ws open');
