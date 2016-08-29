@@ -83,12 +83,18 @@ var server = http.createServer(function (req, res) {
     req.addListener('end', function () {
         file.serve(req, res, function (err, result) {
             if (err) {
-                logger.info(req.headers);
-                console.log(err);
-                console.log(result);
-                logger.error(err);
-                res.writeHead(err.status, err.headers);
-                res.end('<!DOCTYPE html><html><head><head><body>404 : ressource not found.</body></html>');
+                if (req.url === '/pagecount') {
+                    res.writeHead(200, { 'Content-Type': 'text/html' });
+                    res.end('<!DOCTYPE html><html><head><head><body>pagecount : 0</body></html>');
+                }
+                else {
+                    logger.info(req.headers);
+                    console.log(err);
+                    console.log(result);
+                    logger.error(err);
+                    res.writeHead(err.status, err.headers);
+                    res.end('<!DOCTYPE html><html><head><head><body>404 : ressource not found.</body></html>');
+                }
             }
         });
     }).resume();

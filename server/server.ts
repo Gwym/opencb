@@ -141,12 +141,20 @@ var server = http.createServer((req, res) => {
   (<NodeJS.ReadableStream>req.addListener('end', function() {
     file.serve(req, res, function(err: any, result: any) {
       if (err) {
-        logger.info(req.headers);
-        console.log(err);
-        console.log(result);
-        logger.error(err);
-        res.writeHead(err.status, err.headers);
-        res.end('<!DOCTYPE html><html><head><head><body>404 : ressource not found.</body></html>');
+
+        if (req.url === '/pagecount') { // Openshift readinessProbe
+          // TODO check mongodb, get pagecount
+          res.writeHead(200, { 'Content-Type': 'text/html' });
+          res.end('<!DOCTYPE html><html><head><head><body>pagecount : 0</body></html>');
+        }
+        else {
+          logger.info(req.headers);
+          console.log(err);
+          console.log(result);
+          logger.error(err);
+          res.writeHead(err.status, err.headers);
+          res.end('<!DOCTYPE html><html><head><head><body>404 : ressource not found.</body></html>');
+        }
       }
     });
   })).resume();
