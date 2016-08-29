@@ -32,13 +32,14 @@ var logger = {
         console.error(err);
     }
 };
-class User {
-    constructor(name, login, password) {
+var User = (function () {
+    function User(name, login, password) {
         this.name = name;
         this.login = login;
         this.password_hash = password;
     }
-}
+    return User;
+})();
 var users = {
     find: function (login) {
         return new User('Test', 'test', 'test');
@@ -76,7 +77,7 @@ var initDb = function (callback) {
 initDb(function (err) {
     console.log('Error connecting to Mongo. Message:\n' + err);
 });
-var server = http.createServer((req, res) => {
+var server = http.createServer(function (req, res) {
     req.headers.url = req.url;
     req.headers.ip = req.socket.remoteAddress;
     req.addListener('end', function () {
