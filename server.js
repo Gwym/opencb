@@ -23,7 +23,7 @@ var toStr = function (o) {
     }
     return o_str;
 };
-var file = new fileServer.Server('webapp', { indexFile: "index.html", cache: 0 });
+var file = new fileServer.Server('webapp', { cache: 0 });
 var logger = {
     info: function (s) {
         console.log(s);

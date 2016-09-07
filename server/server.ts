@@ -37,7 +37,7 @@ var toStr = function (o: any) {
 
 
 // index page
-var file = new fileServer.Server('webapp', { indexFile: "index.html", cache: 0 }); // set cache: 0 is for debugging purpose
+var file = new fileServer.Server('webapp', { /*indexFile: "index.html", */cache: 0 }); // set cache: 0 is for debugging purpose
 
 // TODO (2) : fileLogger or MongoDBlogger
 var logger = {
@@ -139,11 +139,14 @@ var server = http.createServer((req, res) => {
   req.headers.ip = req.socket.remoteAddress;
     
   (<NodeJS.ReadableStream>req.addListener('end', function() {
+    
+    // TODO (1) : i18n, parse browser language, redirect
+
     file.serve(req, res, function(err: any, result: any) {
       if (err) {
 
-        if (req.url === '/pagecount') { // Openshift readinessProbe
-          // TODO check mongodb, get pagecount
+      if (req.url === '/pagecount') { // Openshift readinessProbe
+          // TODO (1) : check mongodb, get pagecount
           res.writeHead(200, { 'Content-Type': 'text/html' });
           res.end('<!DOCTYPE html><html><head><head><body>pagecount : 0</body></html>');
         }

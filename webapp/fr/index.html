@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+	<meta charset=utf-8>
+	<meta name="description" content="Déterminez vos rythmes biologiques personnalisés">
+	<title>OpenCB - Votre agenda chronobiologique</title>
+	<meta name="keywords" content="chronobiologie, rythmes, agenda">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../css/style.css">
+	<script src="../js/menu.js" defer></script>
+	<script src="../js/login.js" defer></script>
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<header class="header">
+
+			<span>OpenCB</span>
+			<button title="Vos informations sont uniquement stockées localement et seront perdues si vous videz votre cache">Sign in</button>
+			<button title="Vos informations sont uniquement stockées localement et seront perdues si vous videz votre cache">Register</button>
+			<button title="Changer de date d'étude, de mode, éditez vos données">Options</button>
+			<a href="../en/index.html">English</a>
+
+		</header>
+		<article class="main">
+			<section id="data" data-section="data" data-title="Data">
+
+				<label>
+					<span id="pseudonym">Invité</span><span>, né le</span>
+					<input id="birthdate-input" type="date">
+				</label>
+
+				<label>
+					<span> Etude pour le </span>
+					<input id="studydate-input" type="date">
+				</label>
+
+				<div id="render">(TODO Graphic rendering section)</div>
+			</section>
+
+
+			<section id="introduction" data-section="introduction" data-title="Introduction">
+				<h2>Bienvenue sur OpenCB</h2>
+				<p>La <a href="https://fr.wikipedia.org/wiki/Chronobiologie">chronobiologie</a> étudie les rythmes biologiques des êtres vivants.
+				Cette application a pour but d'éxtraire des rythmes de long terme à partir de données diverses, des signaux biologiques
+					(EGG, ECG..) aux états d'âmes. (TODO potato graph Diary whit meta data, heath data, filter, model, envents,
+					feedback...)</p>
+			</section>
+
+			<section id="why" data-section="why" data-title="why">
+				<h2>Pourquoi ?</h2>
+				<p>Pourquoi devrait-on rechercher des motifs dans nos données biologiques ? Il serait possible, grâce à ces informations, de prévenir ou de mieux gérer 
+					beaucoup de problèmes en sachant déterminer s'il faut ou non faire quelque chose à un moment donné.</p>
+				<p>Pourquoi une application au code source ouvert ? Certaines personnes ne souhaitent pas mettre leur données vitales entre toutes les mains et risquer d'en perdre le contrôle.
+					 Ici, tout le monde peut érifier ce qui est fait des données, et peut même monter son propre serveur privé grâce àa la simplicité du déploiment en un clic.
+					 Une autre raison est la possibilité de partager les résultats. Cela peut être long de collecter des années de données pour en tirer des motifs utiles.
+					 Les personnes qui démarrent pourront bénéficier des modèles établis par d'autres.
+				</p>
+			</section>
+
+			<section id="what" data-section="what" data-title="what">
+				<h2>Quel appareillage est nécessaire pour collecter des données ?</h2>
+				<p>Vous pourriez par exemple utiliser votre smartphone pour réaliser un sondage quotidien de votre état, un appareil connecté ou un biosenseur pour obtenir des données,
+					un microphone pour analyser votre intonation du jour, voire, dans vos rêves les plus fous une webcam pour analyser vos mouvements ou la couleur de votre peau.</p>
+				<p>La première version se focalise sur deux moyens : la solution basique pour les personnes qui n'ont pas d'appareillage spécifique, il est possible d'évaluer quotidiennement 
+					certains aspects personnels (forme physique et morale) graĉe à un simple mobile ou PC, via un sondage ou dans des versions ultérieures via des tests ou des mini-jeux,
+					et deuxièmement la carte OpenBCI, qui permet de capturer des données biologiques vers une carte mémoire ou vers un serveur.
+				</p>
+			</section>
+
+			<section id="analysis">
+				<h2>Analyse des données</h2>
+				<p>L'analyse des donnes se fait principalement via des algorithmes génétiques qui générent des modèles et les appliquent aux données pour obtenir le meilleur score.</p>
+				<p>(TODO Data statistics, genetic algorithm, data formats...)</p>
+			</section>
+
+			<section id="basic">
+				<h2>Les solutions basiques de capture des donnes</h2>
+				<p>Les solutions pour les personnes qui n'ont pas d'appareillage spécifique : sondage quotidien, évaluation quotidienne via des tests ou des mini-jeux, entrées du smartphone,
+					microphone (changement d'intonation), webcam (gestes, peau, yeux), etc...</p>
+			</section>
+
+			<section id="electrograms">
+				<h2>Biosenseurs</h2>
+				<h2>Acquisition d'ondes cérébrales OpenBCI</h2>
+				<p style="text-align: center"><img src="../res/obci_board_small.jpg" /></p>
+				<p>(Todo... check for other devices that OpenBCI with open api)</p>
+			</section>
+
+			<section id="wearable">
+				<h2>Senseurs portables, appareils connectés, ... </h2>
+				<p>(Todo... check for open protocol / api / programmable wearable devices )</p>
+			</section>
+
+			<section id="sleeptrackers">
+				<h2>Appareils de surveillance du sommeil</h2>
+				<p>(Todo... check for open protocol / api / programmable sleep tracker)</p>
+			</section>
+
+
+		</article>
+		<aside class="aside aside-1">
+			<div class="sidebar-menu">
+				<div class="logo">
+
+					<!-- <canvas id="logo"></canvas> -->
+					<img id="logo" src="../res/logo.png" />
+
+					<p>Chronbiologie ouverte : Déterminez vos rythmes biologiques personnalisés.</p>
+
+					<div class="social-buttons">
+
+						<a href="#" title="web site"><span class="icon icon-web">w</span></a>
+						<a href="#" title="twitter"><span class="icon icon-twitter">t</span></a>
+						<a href="#" title="facebook"><span class="icon icon-facebook">f</span></a>
+					</div>
+
+				</div>
+
+				<div class="login">
+
+					<h3><span>&#9892;</span>Connexion</h3>
+
+					<form>
+						<input type="email" id="email-input" placeholder="e-mail" />
+						<input type="password" id="password-input" placeholder="mot de passe" />
+						<input type="button" id="do_login" value="Connexion" />
+						<!--	<a href="connect.html" id="do_login">Connection</a> -->
+					</form>
+
+				</div>
+
+				<div class="sidebar-links">
+
+					<h3><span>&#9784;</span>Informations</h3>
+
+					<div class="selected">
+
+						<h4 class="link-4">Présentation</h4>
+
+						<ul class="sub-links">
+							<li><a href="#why" onclick="displaySection(this);">Pourquoi ?</a></li>
+							<li><a href="#what" onclick="displaySection(this);">Quel matériel ?</a></li>
+						</ul>
+
+					</div>
+					<div>
+						<h4 class="link-1">Histoire</h4>
+
+						<ul class="sub-links">
+							<li><a href="#introduction" onclick="displaySection(this);">Introduction</a></li>
+						</ul>
+
+					</div>
+
+					<div>
+						<h4 class="link-2">Data</h4>
+
+						<ul class="sub-links">
+							<li><a href="#analysis" onclick="displaySection(this);">Analyse des données</a></li>
+							<li><a href="#basic" onclick="displaySection(this);">Solutions de base</a></li>
+							<li><a href="#wearable" onclick="displaySection(this);">Technologie portable</a></li>
+							<li><a href="#sleeptrackers" onclick="displaySection(this);">Traqueur de sommeil</a></li>
+							<li><a href="#electrograms" onclick="displaySection(this);">Electrographie</a></li>
+						</ul>
+
+					</div>
+
+					<div>
+						<h4 class="link-3">Ressources</h4>
+
+						<ul class="sub-links">
+							<li><a href="#">Link 1</a></li>
+							<li><a href="#">Link 2</a></li>
+							<li><a href="#">Link 3</a></li>
+							<li><a href="#">Link 4</a></li>
+						</ul>
+
+					</div>
+
+				</div>
+
+
+
+
+				<div class="latest-blog-posts">
+
+					<h3><span>&#9775;</span>Latest posts</h3>
+
+					<ul class="latest-posts">
+						<li><a href="#">Lorem ipsum... très intéressant. </a><span>Il y a 2 jours</span></li>
+						<li><a href="#">Plus intéressant. </a><span>Il y a 1 semaine</span></li>
+						<li><a href="#">Encore plus fascinant. </a><span>Il y a 2 semaines</span></li>
+						<li><a href="#">Des trucs à rester baba. </a><span>Il y a 3 semaines</span></li>
+					</ul>
+				</div>
+
+
+
+				<div class="photo-stream">
+
+					<h3><span>&#9783;</span>Aperçu</h3>
+
+					<div class="gallery">
+						<a href="#"><img src="../res/obci_board_small.jpg" alt="carte OBCI" /></a>
+						<p class="pagination">
+							<span>1 of 2</span>
+							<a href="#" class="previous"></a>
+							<a href="#" class="next"></a>
+						</p>
+					</div>
+				</div>
+				<div>
+		</aside>
+		<aside class="aside aside-2">Todo...</aside>
+		<footer class="footer">
+			<a href="help.html">Help</a> <a href="about.html">About</a>
+		</footer>
+		</div>
+
+</body>
+
+</html>
