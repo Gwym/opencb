@@ -39,7 +39,7 @@ var User = (function () {
         this.password_hash = password;
     }
     return User;
-})();
+}());
 var users = {
     find: function (login) {
         return new User('Test', 'test', 'test');

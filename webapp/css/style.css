@@ -5,6 +5,9 @@ body {
     color: #444;
     font-family: monospace;
 }
+fieldset {
+    display: inline;
+}
 .hidden {
     display: none;
 }
@@ -41,7 +44,7 @@ body {
 .aside-2 {
     border-left: 1px solid #ded;
 }
-.wrapper .header button {
+/* .wrapper .header*/ button {
     padding: 8px 16px;
     font-size: 13px;
     font-weight: bold;
@@ -450,3 +453,66 @@ form input[type=password] {
         order: 4;
     }
 }
+
+
+/* fallback diary */
+
+#clear-area {
+    margin-top: 10px;
+    border-bottom: 1px solid #ded; 
+    clear: both;
+}
+
+.l_outer {
+	padding: 0;
+	margin-left: 0.5em;
+	margin-top: 1em;
+	border: 1px solid #DDCCAA;
+	background: white;
+	width: 14em;
+	float: left;
+}
+
+.l_outer div {
+	float: left;
+	padding: 0;
+	margin: 0;
+	border-bottom: 1px dotted #DDCCAA;
+	width: 100%;
+}
+
+.l_outer div p {
+	padding: 0;
+	margin-left: 0.5em;
+	font: italic bold 1em/ 1.2em Monospace;
+	display: inline;
+}
+
+.l_outer h1 {
+	padding: 0;
+	margin: 0;
+	background-color: #DDCCAA;
+	text-align: center;
+	font-weight: bold;
+	font-size: 14pt;
+}
+
+.d {
+	color: #777;
+}
+
+.p {
+	color: #FF0000;
+}
+
+.e {
+	color: #0000D0;
+}
+
+.i {
+	color: #008000;
+}
+
+#dispc {
+	margin-left: 200px;
+	}

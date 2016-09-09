@@ -8,8 +8,7 @@
 	<meta name="keywords" content="chronobiologie, rythmes, agenda">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../css/style.css">
-	<script src="../js/menu.js" defer></script>
-	<script src="../js/login.js" defer></script>
+	<script src="../js/client.js" defer></script>
 </head>
 
 <body>
@@ -18,8 +17,8 @@
 		<header class="header">
 
 			<span>OpenCB</span>
-			<button title="Vos informations sont uniquement stockées localement et seront perdues si vous videz votre cache">Sign in</button>
-			<button title="Vos informations sont uniquement stockées localement et seront perdues si vous videz votre cache">Register</button>
+			<button title="Vos informations sont uniquement stockées localement et seront perdues si vous videz votre cache">Se connecter</button>
+			<button title="Vos informations sont uniquement stockées localement et seront perdues si vous videz votre cache">S'enregistrer</button>
 			<button title="Changer de date d'étude, de mode, éditez vos données">Options</button>
 			<a href="../en/index.html">English</a>
 
@@ -29,15 +28,27 @@
 
 				<label>
 					<span id="pseudonym">Invité</span><span>, né le</span>
-					<input id="birthdate-input" type="date">
+					<input id="birthdate-input" type="date" required>
 				</label>
 
 				<label>
 					<span> Etude pour le </span>
-					<input id="studydate-input" type="date">
+					<input id="studydate-input" type="date" required>
 				</label>
 
-				<div id="render">(TODO Graphic rendering section)</div>
+			<!--	<fieldset>
+					<legend>Options</legend> 
+					<input type="checkbox" id="dispall" name="opt" value="displayall" />
+					<label id="l_dispall" for="dispall">Afficher tous les jours</label>
+					</fieldset> -->
+
+				<label id="bdres">&nbsp;</label>
+
+				<!-- <input id="button-render" type="button" value="Afficher"> -->
+				<button id="button-render" title="Afficher votre bilan">Afficher votre bilan</button>
+
+				<div id="render-area"></div>
+				<div id="clear-area"></div>
 			</section>
 
 
@@ -77,7 +88,7 @@
 			</section>
 
 			<section id="basic">
-				<h2>Les solutions basiques de capture des donnes</h2>
+				<h2>Les solutions basiques de capture des données</h2>
 				<p>Les solutions pour les personnes qui n'ont pas d'appareillage spécifique : sondage quotidien, évaluation quotidienne via des tests ou des mini-jeux, entrées du smartphone,
 					microphone (changement d'intonation), webcam (gestes, peau, yeux), etc...</p>
 			</section>

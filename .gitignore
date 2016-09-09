@@ -10,3 +10,4 @@ node_modules
 
 # Typescript typings
 server/typings
+server/typings.json

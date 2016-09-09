@@ -8,8 +8,7 @@
 	<meta name="keywords" content="chronobiology, rhythms, diary">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../css/style.css">
-	<script src="../js/menu.js" defer></script>
-	<script src="../js/login.js" defer></script>
+	<script src="../js/client.js" defer></script>
 </head>
 
 <body>
@@ -21,7 +20,7 @@
 			<button title="Your informations are only stored locally, and will be lost if you empty your cache">Sign in</button>
 			<button title="Your informations are only stored locally, and will be lost if you empty your cache">Register</button>
 			<button title="Change studydate, mode, edit your data">Options</button>
-			<a href="../fr/index.html">français</a>
+			<a href="../fr/index.html">Français</a>
 
 		</header>
 		<article class="main">
@@ -29,15 +28,27 @@
 
 				<label>
 					<span id="pseudonym">Guest</span><span>, born on</span>
-					<input id="birthdate-input" type="date">
+					<input id="birthdate-input" type="date" required>
 				</label>
 
 				<label>
 					<span> Study for</span>
-					<input id="studydate-input" type="date">
+					<input id="studydate-input" type="date" required>
 				</label>
 
-				<div id="render">(TODO Graphic rendering section)</div>
+			<!--	<fieldset>
+					<legend>Options</legend> 
+					<input type="checkbox" id="dispall" name="opt" value="displayall" />
+					<label id="l_dispall" for="dispall">Display all days</label>
+					</fieldset> -->
+
+				<label id="bdres">&nbsp;</label>
+
+				<!-- <input id="button-render" type="button" value="Display"> -->
+				<button  id="button-render" title="Display your checkup">Display your checkup</button>
+
+				<div id="render-area"></div>
+				<div id="clear-area"></div>
 			</section>
 
 
